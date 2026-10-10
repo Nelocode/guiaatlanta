@@ -31,7 +31,7 @@ export const CategoriesSection: React.FC<{ initialCategories: any[] }> = ({ init
   const { selectedCategory, setSelectedCategory } = useApp();
 
   const handleCategoryClick = (catId: string) => {
-    setSelectedCategory(catId === selectedCategory ? 'all' : catId);
+    setSelectedCategory((catId === selectedCategory ? 'all' : catId) as any);
     const dest = document.getElementById('destacados');
     if (dest) dest.scrollIntoView({ behavior: 'smooth' });
   };

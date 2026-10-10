@@ -120,6 +120,7 @@ export const FlipbookViewer: React.FC<FlipbookViewerProps> = ({ pdfUrl, title })
                     justify-content: center;
                   }
                 `}</style>
+                {/* @ts-ignore */}
                 <HTMLFlipBook
                   width={pageWidth}
                   height={pageHeight}
