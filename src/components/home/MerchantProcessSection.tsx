@@ -47,7 +47,7 @@ export const MerchantProcessSection: React.FC = () => {
             </div>
 
             <h2 className="text-3xl sm:text-5xl font-black leading-tight tracking-tight">
-              Potencia tu negocio con nuestro <span className="text-amber-300 underline decoration-[#008753]">proceso curado</span>.
+              Potencia tu negocio o servicio con nuestro <span className="text-amber-300 underline decoration-[#008753]">proceso verificado</span>.
             </h2>
 
             <p className="text-purple-200 text-base leading-relaxed">

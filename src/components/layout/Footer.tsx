@@ -21,7 +21,7 @@ export const Footer: React.FC = () => {
               <Logo size="md" />
             </div>
             <p className="text-purple-200 text-sm leading-relaxed max-w-md">
-              La Guía Atlanta es la plataforma digital de conexión comercial, gastronómica y profesional líder para residentes y comercios de la metrópoli de Atlanta. Conectando lo mejor de la ciudad con un estándar visual y tecnológico excepcional.
+              La Guía Atlanta es la plataforma digital de conexión comercial, gastronómica y profesional líder para residentes y comercios del área de Atlanta. Conectando lo mejor de la ciudad con un estándar visual y tecnológico excepcional.
             </p>
             <div className="flex items-center gap-4 text-purple-300">
               <a href="#" className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center hover:bg-[#008753] hover:text-white transition" title="Instagram">

@@ -1,0 +1,103 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// NextAuth required models
+model Account {
+  id                 String  @id @default(cuid())
+  userId             String
+  type               String
+  provider           String
+  providerAccountId  String
+  refresh_token      String?  @db.Text
+  access_token       String?  @db.Text
+  expires_at         Int?
+  token_type         String?
+  scope              String?
+  id_token           String?  @db.Text
+  session_state      String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String?   @unique
+  emailVerified DateTime?
+  image         String?
+  password      String?
+  role          String    @default("user") // 'user', 'admin', 'pro'
+  phone         String?
+  whatsapp      String?
+  accounts      Account[]
+  sessions      Session[]
+  listings      Listing[]
+  createdAt     DateTime  @default(now())
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+// Custom Models
+model Category {
+  id          String    @id @default(cuid())
+  name        String
+  slug        String    @unique
+  icon        String?   @default("box")
+  description String?
+  listings    Listing[]
+  createdAt   DateTime  @default(now())
+}
+
+model Listing {
+  id              String   @id @default(cuid())
+  userId          String
+  categoryId      String
+  title           String
+  description     String   @db.Text
+  price           Decimal? @db.Decimal(10, 2)
+  condition       String   @default("new") // new, used, refurbished, na
+  status          String   @default("active") // active, paused, sold, pending
+  isFeatured      Boolean  @default(false)
+  images          String[] // PostgreSQL specific array
+  contactPhone    String?
+  contactWhatsapp String?
+  contactEmail    String?
+  locationText    String?
+  createdAt       DateTime @default(now())
+  expiresAt       DateTime?
+
+  user     User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  category Category @relation(fields: [categoryId], references: [id], onDelete: Restrict)
+}
+
+model Magazine {
+  id            String   @id @default(cuid())
+  title         String
+  coverUrl      String?
+  pdfUrl        String
+  publishedDate DateTime
+  isActive      Boolean  @default(true)
+  createdAt     DateTime @default(now())
+}

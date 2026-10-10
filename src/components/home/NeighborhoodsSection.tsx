@@ -23,7 +23,7 @@ export const NeighborhoodsSection: React.FC = () => {
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
           <div>
             <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#008753] bg-emerald-50 px-3 py-1 rounded-full mb-3">
-              Geografía Metrópolis
+              Explora el Área
             </div>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900">
               Explora por <span className="text-[#522B8B]">Zonas de Atlanta</span>

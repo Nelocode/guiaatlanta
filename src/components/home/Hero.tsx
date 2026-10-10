@@ -54,7 +54,7 @@ export const Hero: React.FC = () => {
                 Descubre lo <span className="text-[#522B8B] relative underline decoration-[#008753]/40 decoration-wavy decoration-2">mejor de Atlanta</span> en un solo lugar.
               </h1>
               <p className="text-lg text-gray-600 font-normal leading-relaxed max-w-2xl">
-                Tu portal digital curado para conectar con los mejores restaurantes, servicios profesionales, tiendas y experiencias exclusivas en toda la metrópoli de Atlanta.
+              Tu portal digital seleccionado para conectar con los mejores restaurantes, servicios profesionales, tiendas y experiencias exclusivas en toda el área de Atlanta.
               </p>
             </div>
 

@@ -5,9 +5,8 @@ import { useApp } from '@/lib/context/AppContext';
 import { ListingCard } from '../listings/ListingCard';
 import { Sparkles, SlidersHorizontal, ShieldCheck, Crown, RefreshCw } from 'lucide-react';
 
-export const FeaturedListings: React.FC = () => {
+export const FeaturedListings: React.FC<{ initialListings: any[] }> = ({ initialListings }) => {
   const { 
-    listings, 
     searchQuery, 
     selectedCategory, 
     selectedZone, 
@@ -15,6 +14,8 @@ export const FeaturedListings: React.FC = () => {
     setSelectedZone,
     setSearchQuery 
   } = useApp();
+  
+  const listings = initialListings;
 
   const [activeTab, setActiveTab] = useState<'all' | 'verified' | 'vip' | 'top'>('all');
 
@@ -74,7 +75,7 @@ export const FeaturedListings: React.FC = () => {
               Comercios & Experiencias <span className="text-[#008753]">Recomendadas</span>
             </h2>
             <p className="text-sm text-gray-600 mt-2">
-              Explora negocios con alta calificación y verificación de autenticidad en la metrópoli.
+              Explora negocios con alta calificación y verificación de confianza en la ciudad.
             </p>
           </div>
 
