@@ -2,8 +2,11 @@ FROM node:20-alpine AS builder
 
 WORKDIR /app
 
-# Copy dependencies manifest
+RUN apk add --no-cache openssl
+
+# Copy dependencies manifest and prisma schema
 COPY package*.json ./
+COPY prisma ./prisma
 
 # Install dependencies
 RUN npm install
@@ -13,10 +16,6 @@ COPY . .
 
 ENV NEXT_TELEMETRY_DISABLED=1
 ENV NODE_ENV=production
-
-# Generate Prisma Client
-RUN npx prisma generate
-
 # Build Next.js application
 RUN npm run build
 
