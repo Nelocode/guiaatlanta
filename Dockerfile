@@ -24,6 +24,8 @@ ENV NEXTAUTH_SECRET=$NEXTAUTH_SECRET
 ARG NEXTAUTH_URL
 ENV NEXTAUTH_URL=$NEXTAUTH_URL
 
+ENV NODE_OPTIONS="--max-old-space-size=2048"
+
 # Build Next.js application
 RUN npm run build
 
