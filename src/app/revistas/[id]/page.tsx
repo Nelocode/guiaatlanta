@@ -6,17 +6,19 @@ import FlipbookWrapper from '@/components/magazines/FlipbookWrapper';
 import { ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
 
-export async function generateMetadata({ params }: { params: Promise<{ id: string }> }) {
-  const resolvedParams = await params;
-  const magazine = await prisma.magazine.findUnique({ where: { id: resolvedParams.id } });
+export const dynamic = 'force-dynamic';
+
+export async function generateMetadata(props: { params: Promise<{ id: string }> }) {
+  const params = await props.params;
+  const magazine = await prisma.magazine.findUnique({ where: { id: params.id } });
   if (!magazine) return { title: 'Revista no encontrada | La Guía Atlanta' };
   return { title: `${magazine.title} | Revistas | La Guía Atlanta` };
 }
 
-export default async function MagazineDetailPage({ params }: { params: Promise<{ id: string }> }) {
-  const resolvedParams = await params;
+export default async function MagazineDetailPage(props: { params: Promise<{ id: string }> }) {
+  const params = await props.params;
   const magazine = await prisma.magazine.findUnique({
-    where: { id: resolvedParams.id }
+    where: { id: params.id }
   });
 
   if (!magazine || !magazine.isActive) {
